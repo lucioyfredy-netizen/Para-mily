@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Message for Mily</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+        #hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            transform: rotate(45deg);
+            animation: fall 5s infinite;
+        }
+        @keyframes fall {
+            0% {
+                top: -10px;
+                left: calc(random() * 100vw);
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+        #message {
+            font-size: 2em;
+            margin-top: 20%;
+        }
+        #typewriter {
+            display: inline;
+            border-right: 2px solid black;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to {border-color: transparent;}
+            50% { border-color: black; }
+        }
+    </style>
+    <script>
+        function createHearts() {
+            const heartCount = 50;
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        window.onload = () => {
+            createHearts();
+        };
+    </script>
+</head>
+<body>
+    <div id="hearts"></div>
+    <div id="message">
+        <div id="typewriter">To my dearest Mily,</div>
+        <div>All my love is for you!</div>
+    </div>
+</body>
+</html>
